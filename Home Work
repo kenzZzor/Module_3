@@ -1,0 +1,99 @@
+public void Log(string message, string logType)
+{
+    Console.WriteLine($"{logType.ToUpper()}: {message}");
+}
+
+public class Configuration
+{
+    public string ConnectionString { get; set; } = "Server=myServer;Database=myDb;User Id=myUser;Password=myPass;";
+}
+
+public class DatabaseService
+{
+    private Configuration _config;
+
+    public DatabaseService(Configuration config)
+    {
+        _config = config;
+    }
+
+    public void Connect()
+    {
+        string connectionString = _config.ConnectionString;
+    }
+}
+
+public class LoggingService
+{
+    private Configuration _config;
+
+    public LoggingService(Configuration config)
+    {
+        _config = config;
+    }
+
+    public void Log(string message)
+    {
+        string connectionString = _config.ConnectionString;
+    }
+}
+
+
+// KISS
+public void ProcessNumbers(int[] numbers)
+{
+    if (numbers == null || numbers.Length == 0) return;
+
+    foreach (var number in numbers)
+    {
+        if (number > 0)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}
+
+
+//LINQ
+public void PrintPositiveNumbers(int[] numbers)
+{
+    foreach (var number in numbers)
+    {
+        if (number > 0)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}
+
+
+//YAGNI
+public class User
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+}
+
+public class UserService
+{
+    public void SaveToDatabase(User user)
+    {
+        // Сохранение пользователя
+    }
+}
+
+public class EmailService
+{
+    public void SendEmail(string email)
+    {
+        // Отправка письма
+    }
+}
+
+public class AddressService
+{
+    public void PrintAddressLabel(User user)
+    {
+        // Печать адресного ярлыка
+    }
+}
