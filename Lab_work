@@ -1,0 +1,119 @@
+//DRY
+public class OrderService
+{
+    private double CalculateTotalPrice(int quantity, double price)
+    {
+        return quantity * price;
+    }
+
+    public void CreateOrder(string productName, int quantity, double price)
+    {
+        double totalPrice = CalculateTotalPrice(quantity, price);
+        Console.WriteLine($"Order for {productName} created. Total: {totalPrice}");
+    }
+
+    public void UpdateOrder(string productName, int quantity, double price)
+    {
+        double totalPrice = CalculateTotalPrice(quantity, price);
+        Console.WriteLine($"Order for {productName} updated. New total: {totalPrice}");
+    }
+}
+public class Vehicle
+{
+    public void Start()
+    {
+        Console.WriteLine($"{GetType().Name} is starting");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine($"{GetType().Name} is stopping");
+    }
+}
+
+public class Car : Vehicle
+{
+    // Дополнительная логика для Car (если необходимо)
+}
+
+public class Truck : Vehicle
+{
+    // Дополнительная логика для Truck (если необходимо)
+}
+
+
+//KISS
+public class Calculator
+{
+    public void Add(int a, int b)
+    {
+        Console.WriteLine(a + b);
+    }
+
+    public void Subtract(int a, int b)
+    {
+        Console.WriteLine(a - b);
+    }
+}
+
+public static class Singleton
+{
+    public static void DoSomething()
+    {
+        Console.WriteLine("Doing something...");
+    }
+}
+
+public class Client
+{
+    public void Execute()
+    {
+        Singleton.DoSomething();
+    }
+}
+
+
+//YAGNI
+public class Circle
+{
+    private double _radius;
+
+    public Circle(double radius)
+    {
+        _radius = radius;
+    }
+
+    public double CalculateArea()
+    {
+        return Math.PI * _radius * _radius;
+    }
+}
+
+public class Square
+{
+    private double _side;
+
+    public Square(double side)
+    {
+        _side = side;
+    }
+
+    public double CalculateArea()
+    {
+        return _side * _side;
+    }
+}
+
+public class MathOperations
+{
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    public void LogResult(int result)
+    {
+        Console.WriteLine($"Result: {result}");
+    }
+}
+
